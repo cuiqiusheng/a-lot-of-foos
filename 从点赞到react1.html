@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function() {
+			class LikeButton {
+				render() {
+					return `
+						<button class="like-button">
+							<span class="like-text">点赞</span>
+							<span>👍</span>
+						</button>
+					`
+				}
+			}
+			const wrapper = document.querySelector('.wrapper');
+			const likeButton1 = new LikeButton();
+			wrapper.innerHTML = likeButton1.render();
+
+			const likeButton2 = new LikeButton();
+			wrapper.innerHTML += likeButton2.render();
+		};
+	</script>
+</head>
+<body>
+	<div class="wrapper"></div>
+</body>
+</html>

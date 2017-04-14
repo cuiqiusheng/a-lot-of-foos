@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function live(targetObject, type, fn) {
+			document.onClick = function(event) {
+				var e = event ? event : window.event;
+				var target = e.srcElement || e.target;
+				if(e.type == type && target.tagName.toLocaleLowerCase() == targetObject) {
+					fn();
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

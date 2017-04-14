@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function() {
+			function createDOMFromString(str) {
+				var oDiv = document.createElement('div');
+				oDiv.innerHTML = str;
+				return oDiv;
+			}
+			class LikeButton {
+				constructor() {
+					this.state = {
+						isLiked: false
+					}
+				}
+				setState(state) {
+					this.state = state;
+					this.el = this.render();
+				}
+				changeLikeText() {
+					this.setState({
+						isLiked: !this.state.isLiked
+					})
+				}
+				render() {
+					this.el = createDOMFromString(`
+						<button class="like-btn">
+							<span class="like-text">${}</span>
+							<span>👍</span>
+						</button>
+					`);
+					this.el.addEventListener('click', this.changeLikeText.bind(this), false);
+					return this.el;
+				}
+			}
+
+			const wrapper = document.querySelector('.wrapper');
+
+			const likeButton1 = new LikeButton();
+			wrapper.appendChild(likeButton1.render());
+
+			const likeButton2 = new LikeButton();
+			wrapper.appendChild(likeButton2.render());
+		};
+	</script>
+</head>
+<body>
+	<div class="wrapper"></div>
+</body>
+</html>

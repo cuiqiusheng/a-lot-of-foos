@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var arr = [3,6,9,1,4,2,0,7,5,8];
+		var times = 0;
+		var bubbleSort = function(arr) {
+			for(var i = 0; i < arr.length-1; i++) {
+				for(var j = i+1; j < arr.length; j++) {
+					if(arr[i] > arr[j]) {
+						var temp = arr[i];
+						arr[i] = arr[j];
+						arr[j] = temp;
+					}
+					console.log("第"+(++times)+"次排序后："+arr);  
+				}
+			}
+			return arr;
+		}
+		console.log(bubbleSort(arr));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

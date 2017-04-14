@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var str = '123456781234567812';
+		var arr = [];
+		for(var i = 0; i < str.length; i+=4) {
+			arr.push(str.substring(i, i+4))
+		}
+		var str2 = arr.join(' ');
+		console.log('str2='+str2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

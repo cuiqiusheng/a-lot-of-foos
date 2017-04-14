@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function() {
+			var oBtn = document.querySelector('.btn');
+			oBtn.addEventListener('click', function() {
+				var win = window.open('', 'win', "alwaysRaised=yes, depended=yes");
+				win.document.title = '打印家系图';
+			}, false);
+		};
+	</script>
+</head>
+<body>
+	<button class="btn">我是一个很长的按钮</button>
+</body>
+</html>

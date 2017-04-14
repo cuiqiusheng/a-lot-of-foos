@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function isPalindrome(str) {
+			str = str.replace(/\W/g, '').toLowerCase();
+			return (str == str.split('').reverse().join(''));
+		}
+		console.log(isPalindrome('abcK H J'))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>  
+<html>  
+    <head>
+        <meta charset="UTF-8">
+        <title>jquery live()函数原理及实现</title>  
+        <style type="text/css">  
+            table{  
+                border-collapse:collapse;  
+                border-spacing:0;  
+            }  
+            td{  
+                border:1px solid #cdcdcd;  
+            }  
+        </style>  
+        <script type="text/javascript">  
+            function live(targetObject, type, fn){    //元素类型，事件类型，执行函数  
+                document.onclick = function(event){  
+                    var e = event ? event : window.event;  
+                    addRow();  
+                    // alert(1);  
+                    //解决浏览器兼容的问题，e.srcElement IE,e.target FF  
+                    var target = e.srcElement || e.target;                    
+                    if(e.type == type && target.tagName.toLocaleLowerCase() == targetObject){  
+                        // alert(3);  
+                        fn();    //如果元素类型和事件类型同时匹配,则执行函数  
+                    }  
+                }  
+            }  
+            function addRow(){  
+                var x=document.getElementById("tb").insertRow(0);  
+                var y=x.insertCell(0);  
+                var z=x.insertCell(1);  
+                y.innerHTML="NEW CELL1";  
+                z.innerHTML="NEW CELL2";  
+            }  
+              
+            //实例:将所有的td(包括后续js添加的)绑定click事件  
+            live("td", "click", function(){  
+                alert("live");  
+            });  
+        </script>  
+    </head>  
+    <body>  
+      
+    实现原理：  
+其实就是将事件绑定到父节点,由于事件冒泡，所有事件最终会冒泡到document节点  
+当有事件触发时，则判断事件类型和触发事件的元素是否一致，如果相同则执行函数  
+    <br>  
+    <br>  
+    <br>  
+        <table id="tb">  
+            <tr>  
+                <td>..........................................</td>  
+                <td>..........................................</td>  
+            </tr>  
+            <tr>  
+                <td>..........................................</td>  
+                <td>..........................................</td>  
+            </tr>  
+            <tr>  
+                <td>..........................................</td>  
+                <td>..........................................</td>  
+            </tr>  
+        </table>  
+    </body>  
+</html> 

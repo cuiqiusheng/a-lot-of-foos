@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var myObject = {
+			foo: "bar",
+			func: function() {
+				var self = this;
+				console.log("outer func: this.foo = " + this.foo);
+				console.log("outer func: self.foo = " + self.foo);
+				(function(){
+					console.log("inner func: this.foo = " + this.foo);
+					console.log("inner func: self.foo = " + self.foo);  // 封闭空间内可以读到外面的全局变量
+				})();
+			}
+		};
+		myObject.func();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

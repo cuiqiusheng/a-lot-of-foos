@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script>
+		function SuperAverage() {
+			this.data_month = [];
+			this.data_week = [];
+			this.add = add;
+			this.monthAverage = monthAverage;
+			this.weekAverage = weekAverage;
+		}
+		function add(arr) {
+			this.data_week = arr;
+			this.data_month.push(this.data_week);
+		}
+		function weekAverage() {
+			var arrWeek = [];
+			for(var i = 0; i < this.data_month.length; i++) {
+				var total = 0;
+				for(var j = 0; j < this.data_week.length; j++) {
+					total += this.data_month[i][j];
+				}
+				arrWeek.push(total / this.data_week.length);
+			}
+			return arrWeek;
+		}
+		function monthAverage() {
+			var total = 0;
+			var num = 0;
+			for(var i = 0; i < this.data_month.length; i++) {
+				for(var j = 0; j < this.data_week.length; j++) {
+					total += this.data_month[i][j];
+				}
+				num += this.data_month[i].length;
+			}
+			return ('月平均数：' + total / num);
+		}
+		var grade = new SuperAverage();
+		grade.add([1, 2, 3, 4, 5, 6, 7]);
+		grade.add([8, 9, 10, 11, 12, 13, 14]);
+		grade.add([15, 16, 17, 18, 19, 20, 21]);
+		console.log(grade.data_month);
+		console.log(grade.monthAverage());
+		console.log(grade.weekAverage());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

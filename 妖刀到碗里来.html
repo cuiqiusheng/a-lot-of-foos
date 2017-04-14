@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>妖刀到碗里来</title>
+	<style>
+		html {
+			height: 100%;
+		}
+		body {
+			height: 100%;
+		}
+		#button {
+			display: block;
+			width: 200px;
+			height: 40px;
+			font-size: 20px;
+			margin: 0 auto;
+			position: fixed;
+			top: 5px;
+			left: 50%;
+			margin-left: -100px;
+		}
+		#box {
+			font-size: 20px;
+			padding-top: 50px;
+		}
+		p {
+			height: 20px;
+			line-height: 20px;
+			margin: 2px;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			var arr = ['arrR', 'arrSR', 'arrSSR'];
+			// 11
+			var arrN = ['涂壁', '天邪鬼赤', '天邪鬼青', '天邪鬼黄', '帚神', '灯笼鬼', '提灯小僧', '赤舌', '盗墓小鬼', '寄生魂', '唐纸伞妖'];
+			// 29
+			var arrR = ['九命猫', '三尾狐', '首无', '跳跳妹妹', '跳跳弟弟', '丑时之女', '觉', '河童', '山童', '兵勇', '山兔', '莹草', '管狐', '椒图', '铁鼠', '青蛙瓷器', '独眼小僧', '鸦天狗', '食发鬼', '童男', '童女', '鲤鱼精', '饿鬼', '巫蛊师', '蝴蝶精', '武士之灵', '座敷童子', '狸猫', '雨女'];
+			// 26
+			var arrSR = ['桃花妖', '雪女', '鬼使白', '鬼使黑', '孟婆', '犬神', '骨女', '鬼女红叶', '跳跳哥哥', '傀儡师', '海坊主', '判官', '凤凰火', '吸血姬', '妖狐', '妖琴师', '姑获鸟', '二口女', '白狼', '惠比寿', '络新妇', '食梦魇', '清姬', '廉鼬', '樱花妖', '般若'];
+			// 10
+			var arrSSR = ['酒吞童子', '茨木童子', '荒川之主', '小鹿男', '大天狗', '两面佛', '阎魔', '妖刀姬', '一目连', '青行灯'];
+
+			var probN = 0.5;
+			var probR = 0.9;
+			var probSR = 0.1;
+			var probSSR = 0.01;
+			var count = 0;
+			var oB = document.getElementById('button');
+			var oBox = document.getElementById('box');
+			oB.addEventListener('click', function() {
+				count += 1;
+				var x = parseInt(Math.random()*100 ,10);
+				var y = parseInt(Math.random()*100 ,10);
+				var ratio = x * y;
+				var row = 0;
+				var sGhost = '';
+				if(ratio >= 500) {
+					row = 1;
+				}else if(ratio < 500 && ratio >= 50){
+					row = 2;
+				}else if(ratio < 50 && ratio >= 1){
+					row = 3;
+				}else if(ratio = 0){
+					row = 1;
+				}
+				console.log(row)
+				switch (row) {
+					case 1:
+						sGhost = arrR[rnd(1, 29)];
+						break;
+					case 2:
+						sGhost = arrSR[rnd(1, 26)];
+						break;
+					case 3:
+						sGhost = arrSSR[rnd(1, 10)];
+						break;
+					default:
+						sGhost = arrR[rnd(1, 29)];
+						break;
+				}
+				sGhost = '<p>'+ (count).toString() + '、' + sGhost +'</p>';
+				oBox.innerHTML += sGhost;
+				getScrollTop();
+			})
+
+			function rnd(n, m){
+				return parseInt(Math.random()*(m-n)+n);
+			}
+			function getScrollTop() {
+			    var scrollTop = document.documentElement.scrollTop;
+			    var viewTop = document.documentElement.clientHeight;
+			    var height = oBox.offsetHeight;
+			    scrollTop = height - viewTop;
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="button" value="马上抽奖" />
+	<div id="box"></div>
+</body>
+</html>

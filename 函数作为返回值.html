@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function sum(a, b) {
+			return function(c) {
+				return a+b+c;
+			}
+		}
+		console.log(sum(4, 3)(5));
+		// sum(a)(b) 这种调用方式说明sum内部返回了一个函数
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var nums = [];
+		for(var i = 0; i < 20; ++i) {
+			nums[i] = i + 1;
+		}
+		
+		function isEven(num) {
+			return num % 2 == 0;
+		}
+		function isOdd(num) {
+			return num % 2 == 1;
+		}
+
+		var arr1 = nums.filter(isEven);
+		console.log('偶数是：');
+		console.log(arr1);
+
+		var arr2 = nums.filter(isOdd);
+		console.log('奇数是：');
+		console.log(arr2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
